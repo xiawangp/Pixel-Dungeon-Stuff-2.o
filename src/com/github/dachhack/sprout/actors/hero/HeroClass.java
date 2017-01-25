@@ -225,16 +225,27 @@ public enum HeroClass {
 	}
 
 	private static void initMage(Hero hero) {
-		(hero.belongings.weapon = new Knuckles()).identify();
+		(hero.belongings.weapon = new Knuckles().reinforce.upgrade(115)).identify();
 
 		WandOfMagicMissile wand = new WandOfMagicMissile();
 		wand.identify().collect();
+		
+		CloakOfShadows cloak = new CloakOfShadows();
+		(hero.belongings.misc1 = cloak).identify();
+		hero.belongings.misc1.activate(hero);
 		
 		KeyRing keyring = new KeyRing(); keyring.collect();
 		
 		Dungeon.quickslot.setSlot(0, wand);
 
 		new ScrollOfIdentify().setKnown();
+		
+		OtilukesJournal jn = new OtilukesJournal(); jn.collect();
+				JournalPage sk1 = new Sokoban1(); sk1.collect();
+				JournalPage sk2 = new Sokoban2(); sk2.collect();
+				JournalPage sk3 = new Sokoban3(); sk3.collect();
+				JournalPage sk4 = new Sokoban4(); sk4.collect();
+				JournalPage sk5 = new Vault(); sk5.collect();
 		
 		//playtest(hero);
 	}
